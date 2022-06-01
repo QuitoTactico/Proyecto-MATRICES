@@ -4,7 +4,8 @@ import Data.Array     --importamos lo necesario
 type Matriz a = Array (Int,Int) a
 
   --Pasa del formato [[9,7,1],[4,7,8]] , al
-  --[((1,1),9),((1,2),7),((1,3),1),((2,1),4),((2,2),7),((2,3),8)]
+  --[((1,1),9),((1,2),7),((1,3),1),((2,1),4),((2,2),7),((2,3),8)] 
+  --Lista de tupla de tuplas, por facilidad le diremos posiciones, o solo pos 
 listaAPos :: Num a => [[a]] -> Matriz a
 listaAPos xss = listArray ((1,1),(m,n)) (concat xss)
   where m = length xss
@@ -69,3 +70,19 @@ main = do
   print(posALista (restaM m1 m2))
   putStrLn "\n-> MULTIPLICACIÓN:"
   print(posALista (multipM m1 m2))
+
+--VIEW: https://replit.com/@QuitoTactico/HASKELLMatrices#Main.hs
+--JOIN: https://replit.com/join/qcsnzgbmbf-quitotactico
+--GITHUB: https://github.com/QuitoTactico/HASKELL_Matrices/blob/main/Main.hs
+
+--Dedicated to Milo.
+--Literally the best cat ever. Rest in peace.
+
+--    _                ___       _.--.
+--    \`.|\..----...-'`   `-._.-'_.-'`  
+--    /  ' `         ,       _.-'              
+--    )/' _/     \   `-_,   /                
+--    `-'" `"\_  ,_.-;_.-\_ ',          I miss you.
+--        _.-'_./   {_.'   ; /            
+--       {_.-``-'         {_/         
+--
