@@ -7,24 +7,25 @@ type Matriz a = Array (Int,Int) a
   --[((1,1),9),((1,2),7),((1,3),1),((2,1),4),((2,2),7),((2,3),8)] 
   --Lista de tupla de tuplas, por facilidad le diremos posiciones, o solo pos 
 listaAPos :: Num a => [[a]] -> Matriz a
-listaAPos xss = listArray ((1,1),(m,n)) (concat xss)
-  where m = length xss
-        n = length (head xss)
+listaAPos nuevaPos = listArray ((1,1),(filas,columnas)) (concat nuevaPos)  
+  where filas = length nuevaPos                                
+        columnas = length (head nuevaPos)
 
-  --No se puede con length, toca hacerlo a mano,
-  --Como todo...
-numColumnas :: Num a => Matriz a -> Int
-numColumnas = snd . snd . bounds
+  --No se puede con length, para saber la columna en la que está, 
+  --toca hacerlo a mano. Así que buscamos el segundo valor de la primera dupla
+numColumna :: Num a => Matriz a -> Int
+numColumna = snd . snd . bounds            --snd = second
 
   --Array ya separa las cosas verticalmente (entre listas)
-  --este sirve para lo horizontal (entre los elementos de cada una)
-separa :: Int -> [a] -> [[a]]
+  --este sirve para lo horizontal (entre los elementosde cada una)
+separa :: Int -> [a] -> [[a]]         --encierra el valor en donde le corresponde
 separa _ [] = []
-separa n xs = take n xs : separa n (drop n xs)
+separa n nuevoValor = take n nuevoValor : separa n (drop n nuevoValor)
 
   --Pasa los valores de las posiciones del formato pos a un array normalito
+  --Necesita los dos métodos anteriores, no vienen predefinidos para el formato pos
 posALista :: Num a => Matriz a -> [[a]]
-posALista p = separa (numColumnas p) (elems p)
+posALista p = separa (numColumna p) (elems p)
 
 
 --                LAS OPERACIONES
@@ -64,7 +65,7 @@ main = do
   let m1 = listaAPos [[5,8,8,5],[1,3,2,6]]
   let m2 = listaAPos [[4,6,3,9],[1,7,5,9]]
 
-  putStrLn "-> SUMA:"
+  putStrLn "\n-> SUMA:"
   print(posALista (sumaM m1 m2))
   putStrLn "\n-> RESTA:"
   print(posALista (restaM m1 m2))
