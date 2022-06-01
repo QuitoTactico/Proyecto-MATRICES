@@ -4,6 +4,7 @@ Esteban Vergara Giraldo - Laura Danniela Zárate Guerrero - Alejandro Restrepo O
 --> Replit Usado:
 
 https://replit.com/@QuitoTactico/HASKELLMatrices#Main.hs
+
 https://replit.com/join/qcsnzgbmbf-quitotactico
 
 Si replit se cayó (Pasa mucho xd) puedes correrlo aquí
